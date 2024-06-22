@@ -58,7 +58,5 @@ Route::middleware(['auth', 'update-last-login', 'role:Super-admin'])->group(func
 Route::middleware(['auth', 'update-last-login', 'role:Super-admin|Agent-gestionnaire'])->group(function () {
     Route::resource('patients', PatientController::class, ["only" => ["index", "show", "update"]]);
     Route::get('elicitations-public', [ElicitationController::class, 'public'])->name('elicitations.public');
-});
-Route::middleware(['auth', 'update-last-login', 'role:Agent-gestionnaire'])->group(function () {
     Route::resource('attendus', AttendusController::class, ["only" => ["index", "show", "update"]]);
 });
