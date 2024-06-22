@@ -22,8 +22,7 @@ return new class extends Migration
 
         Schema::create('rdv_a_r_v_s', function (Blueprint $table) {
 
-            $table->enum('Sexe', ['Masculin', 'Feminin', 'Autre']);
-
+            // $table->enum('Sexe', ['Masculin', 'Feminin', 'Autre']);
 
             $table->id();
             $table->foreignIdFor(\App\Models\Patient::class, "Patient")->nullable()->constrained("patients", "id")->cascadeOnUpdate()->restrictOnDelete();
