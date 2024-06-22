@@ -9,10 +9,10 @@
     <meta name="keywords" content="DBAU">
     <meta name="description" content="DBAU">
 
-    <title>DBAU</title>
+    <title>{{ env('APP_NAME') }} </title>
     <link rel="canonical" href="/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/images/favicon.png') }}">
+    {{-- <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/images/favicon.png') }}"> --}}
     <!-- Custom CSS -->
     <link href="{{ url('dist/css/style.min.css') }}" rel="stylesheet">
 

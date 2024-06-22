@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Database\Eloquent\Model;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,4 +57,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = ['name', 'email', 'password', 'last_login_at'];
+
+    public function patients()
+    {
+        return $this->hasManyThrough(Patient::class, AssocAgentPatient::class, 'Agent', 'id', 'id', 'Patient');
+    }
+
+    function attendusARV()
+    {
+        return RdvARV::whereIn('Patient', $this->patients->pluck('id'));
+    }
+    function attendusCV()
+    {
+        return RdvCV::whereIn('Patient', $this->patients->pluck('id'));
+    }
 }

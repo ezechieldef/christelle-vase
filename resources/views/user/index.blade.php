@@ -36,7 +36,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th> Dernière Connexion </th>
-
+                                        <th>Roles</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -49,6 +49,13 @@
                                             <td>{{ $user->email }}</td>
 
                                             <td>{{ $user->last_login_at }}</td>
+                                            <td>
+                                                @if (!empty($user->getRoleNames()))
+                                                    @foreach ($user->getRoleNames() as $v)
+                                                        <label class="badge bg-success">{{ $v }}</label>
+                                                    @endforeach
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <div class="dropdown dropstart">
